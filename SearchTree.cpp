@@ -22,4 +22,28 @@ public:
     BinaryTree() {
         root = NULL;
     }
+
+    void insert(string element) {
+    Node* newNode = new Node(element, NULL, NULL);
+
+    newNode->info = element;
+    newNode->leftchild = NULL;
+    newNode->rightchild = NULL;
+
+    Node* parent = NULL;
+    Node* current = root;
+
+    search(element, parent, current);
+
+    if(parent == NULL) {
+        root = newNode;
+        return;
+    }
+
+    if(element < parent->info) {
+        parent->leftchild = newNode;
+    } else {
+        parent->rightchild = newNode;
+    }
+    }
 };
